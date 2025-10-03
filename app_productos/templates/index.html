@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestros Productos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        h1 {
+            color: #0056b3;
+            text-align: center;
+        }
+        .productos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .producto-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 15px;
+            width: 250px;
+            text-align: center;
+        }
+        .producto-card h2 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .producto-card p {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+        .producto-card .precio {
+            font-weight: bold;
+            color: #28a745;
+        }
+        .producto-card .stock {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tienda de Ropa Vania Jimenez</h1>
+
+    <div class="productos-container">
+        {% if productos %}
+            {% for producto in productos %}
+            <div class="producto-card">
+                <h2>{{ producto.nombre }}</h2>
+                <p class="precio">Precio: ${{ producto.precio }}</p>
+                <p class="stock">Stock: {{ producto.stock }} unidades</p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No hay productos disponibles en este momento.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
